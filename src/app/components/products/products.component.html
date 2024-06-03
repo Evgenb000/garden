@@ -1,10 +1,21 @@
 <div
   class="grid grid-flow-row grid-cols-5 gap-4 bg-cust__slate rounded-md text-cust__white p-4"
 >
+  <!-- <app-card></app-card>
   <app-card></app-card>
   <app-card></app-card>
   <app-card></app-card>
   <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
+  <app-card></app-card> -->
+  <div *ngFor="let fruit of fruits">
+    <h3>{{ fruit.name }}</h3>
+    <p>Family: {{ fruit.family }}</p>
+    <p>Order: {{ fruit.order }}</p>
+    <p>Genus: {{ fruit.genus }}</p>
+    <p>Calories: {{ fruit.nutritions.calories }}</p>
+    <p>Fat: {{ fruit.nutritions.fat }}</p>
+    <p>Sugar: {{ fruit.nutritions.sugar }}</p>
+    <p>Carbohydrates: {{ fruit.nutritions.carbohydrates }}</p>
+    <p>Protein: {{ fruit.nutritions.protein }}</p>
+  </div>
 </div>

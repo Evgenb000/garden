@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/sideBar/sideBar.component';
 import { ProductsComponent } from './components/products/products.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
