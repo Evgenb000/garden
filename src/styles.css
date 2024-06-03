@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 .btn {
-  @apply text-center text-cust__white px-4 py-3 w-28 cursor-pointer hover:bg-cust__slate hover:shadow-md duration-300 transition rounded-md;
+  @apply text-center text-cust__white px-4 py-3 w-28 cursor-pointer hover:bg-cust__slate-light hover:shadow-md duration-300 transition rounded-md;
+}
+
+.scrolled {
+  @apply shadow-sm shadow-cust__black bg-cust__gray-dark;
 }
