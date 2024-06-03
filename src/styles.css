@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .btn {
-  @apply text-center px-6 py-4 w-32 cursor-pointer bg-cust__green hover:bg-cust__green-dark hover:shadow-md transition rounded-md;
+  @apply text-center text-cust__white px-4 py-3 w-28 cursor-pointer hover:bg-cust__slate hover:shadow-md duration-300 transition rounded-md;
 }
