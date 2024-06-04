@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { NgFor } from '@angular/common';
+// import imggg from ;
 
 interface Nutrition {
   calories: number;
@@ -9,6 +10,8 @@ interface Nutrition {
   carbohydrates: number;
   protein: number;
 }
+
+const imggg = 0;
 
 interface Fruit {
   name: string;
@@ -29,7 +32,7 @@ interface Fruit {
   imports: [NgFor],
 })
 export class ProductsComponent implements OnInit {
-  fruits: any[] = [];
+  fruits: Fruit[] = [];
 
   constructor(private productsService: ProductsService) {}
 

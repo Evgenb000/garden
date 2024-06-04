@@ -1,56 +1,33 @@
-<div
-  class="grid grid-flow-row grid-cols-5 gap-4 bg-cust__slate rounded-md text-cust__white p-4"
+<article
+  class="grid grid-flow-row grid-cols-5 gap-4 bg-cust__slate rounded-md text-cust__white p-2"
 >
-  <!-- <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card> -->
-  <div *ngFor="let fruit of fruits">
-    <h3>{{ fruit.name }}</h3>
-    <p>Family: {{ fruit.family }}</p>
-    <p>Order: {{ fruit.order }}</p>
-    <p>Genus: {{ fruit.genus }}</p>
-    <p>Calories: {{ fruit.nutritions.calories }}</p>
-    <p>Fat: {{ fruit.nutritions.fat }}</p>
-    <p>Sugar: {{ fruit.nutritions.sugar }}</p>
-    <p>Carbohydrates: {{ fruit.nutritions.carbohydrates }}</p>
-    <p>Protein: {{ fruit.nutritions.protein }}</p>
-    <p>Price: {{ fruit.price }}</p>
-    <p>Rating: {{ fruit.rating }}</p>
-    <p>img: {{ fruit.imgUrl }}</p>
-  </div>
-
-  <!-- <div
+  <div
     *ngFor="let fruit of fruits"
-    class="w-[220px] h-[300px] bg-cust__gray-light text-cust__slate-dark rounded-md"
+    class="flex flex-col justify-between items-center w-[220px] h-[300px] p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
   >
-    <article>
-      <div>
-        <h3>{{ fruit.name }}</h3>
-        <div>
-          <img
-            [src]="fruit.imgUrl"
-            alt="{{ fruit.name }}"
-            class="w-full h-24 object-cover rounded-md"
-          />
-          img
-        </div>
-        <div>Price: {{ fruit.price }}</div>
-        <div class="flex justify-between items-center mt-2">
-          <button (click)="decreaseAmount(fruit)">-</button>
-          <div>{{ fruit.amount }}</div>
-          <button (click)="increaseAmount(fruit)">+</button>
-          <button
-            (click)="buyFruit(fruit)"
-            class="ml-2 p-1 bg-blue-500 text-white rounded-md"
-          >
-            Buy
-          </button>
-        </div>
-        <div class="mt-2">Rating: {{ fruit.rating }} / 5</div>
-      </div>
-    </article>
-  </div> -->
-</div>
+    <div>
+      <h3 class="">
+        <b>{{ fruit.name }}</b>
+      </h3>
+    </div>
+    <div>
+      <img
+        [src]="'./assets/images/products/' + fruit.name.toLowerCase() + '.png'"
+        alt="{{ fruit.name }}"
+        class="w-20 h-20 object-cover rounded-md"
+      />
+    </div>
+    <div class="text-sm">
+      <p>
+        <b>{{ fruit.price }}$</b> per kg <br />
+        Rating: <b>{{ fruit.rating }}</b>
+      </p>
+    </div>
+    <div class="flex w-[200px] gap-4 justify-center my-3">
+      <button (click)="decreaseAmount(fruit)" class="text-2xl">-</button>
+      <div>{{ fruit.amount }}</div>
+      <button (click)="increaseAmount(fruit)" class="text-2xl">+</button>
+    </div>
+    <button (click)="buyFruit(fruit)" class="btn">Buy</button>
+  </div>
+</article>
