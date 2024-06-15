@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { NgFor } from '@angular/common';
-// import imggg from ;
 
 interface Nutrition {
   calories: number;
@@ -11,18 +10,17 @@ interface Nutrition {
   protein: number;
 }
 
-const imggg = 0;
-
 interface Fruit {
+  id: number;
   name: string;
   family: string;
   order: string;
   genus: string;
-  imgUrl: string; // URL изображения фрукта
-  price: number; // Цена фрукта
-  amount: number; // Количество для покупки
-  rating: number; // Рейтинг фрукта
+  imgUrl: string;
+  price: number;
+  rating: number;
   nutritions: Nutrition;
+  amount: number;
 }
 
 @Component({
@@ -33,27 +31,28 @@ interface Fruit {
 })
 export class ProductsComponent implements OnInit {
   fruits: Fruit[] = [];
-
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.productsService.getFruits().subscribe((data) => {
-      this.fruits = data;
+    this.productsService.getFruits().subscribe((fruits: Fruit[]) => {
+      this.fruits = fruits;
+      this.fruits.forEach((fruit) => {
+        fruit.amount = 0;
+      });
     });
   }
 
   decreaseAmount(fruit: Fruit): void {
-    if (fruit.amount > 1) {
-      fruit.amount--;
+    if (fruit.amount >= 0.5) {
+      fruit.amount -= 0.5;
     }
   }
 
   increaseAmount(fruit: Fruit): void {
-    fruit.amount++;
+    fruit.amount += 0.5;
   }
 
   buyFruit(fruit: Fruit): void {
     console.log(`Покупка: ${fruit.name}, количество: ${fruit.amount}`);
-    // Добавьте здесь логику покупки
   }
 }

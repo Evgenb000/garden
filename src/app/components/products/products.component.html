@@ -19,14 +19,22 @@
     </div>
     <div class="text-sm">
       <p>
-        <b>{{ fruit.price }}$</b> per kg <br />
-        Rating: <b>{{ fruit.rating }}</b>
+        Rating: <b>{{ fruit.rating }}</b> / 5 <br />
       </p>
     </div>
-    <div class="flex w-[200px] gap-4 justify-center my-3">
-      <button (click)="decreaseAmount(fruit)" class="text-2xl">-</button>
-      <div>{{ fruit.amount }}</div>
-      <button (click)="increaseAmount(fruit)" class="text-2xl">+</button>
+
+    <div>
+      <b>{{ fruit.price }}$</b> per kg
+
+      <div class="flex w-[200px] gap-4 justify-center my-3 items-center">
+        <button (click)="decreaseAmount(fruit)" class="text-2xl w-5">
+          <img src="./assets/images/icon-minus.png" alt="decrease amount" />
+        </button>
+        <div class="w-12">{{ fruit.amount }} kg</div>
+        <button (click)="increaseAmount(fruit)" class="text-2xl w-5">
+          <img src="./assets/images/icon-plus.png" alt="increase amount" />
+        </button>
+      </div>
     </div>
     <button (click)="buyFruit(fruit)" class="btn">Buy</button>
   </div>

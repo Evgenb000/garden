@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   private apiUrl =
-    'https://run.mocky.io/v3/aee7189f-230c-473f-bb9e-8c82e58dadda';
+    'https://run.mocky.io/v3/d34e599f-b152-4c42-bb55-2b56514edbe0';
 
   constructor(private http: HttpClient) {}
 
