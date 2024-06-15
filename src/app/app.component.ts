@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SideBarComponent } from './components/sideBar/sideBar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { HttpClient } from '@angular/common/http';
+import { CartComponent } from './features/cart/cart.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
     FooterComponent,
     SideBarComponent,
     ProductsComponent,
+    CartComponent,
   ],
   templateUrl: './app.component.html',
 })

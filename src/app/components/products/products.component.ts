@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { NgFor } from '@angular/common';
+import { TotalAmountService } from '../../services/totalAmount.service';
 
 interface Nutrition {
   calories: number;
@@ -31,7 +32,16 @@ interface Fruit {
 })
 export class ProductsComponent implements OnInit {
   fruits: Fruit[] = [];
-  constructor(private productsService: ProductsService) {}
+  public totallAmount: number = 0;
+
+  constructor(
+    private totalAmountService: TotalAmountService,
+    private productsService: ProductsService
+  ) {}
+
+  updateTotalAmount(amount: number): void {
+    this.totalAmountService.setTotalAmount(amount);
+  }
 
   ngOnInit(): void {
     this.productsService.getFruits().subscribe((fruits: Fruit[]) => {
@@ -45,11 +55,15 @@ export class ProductsComponent implements OnInit {
   decreaseAmount(fruit: Fruit): void {
     if (fruit.amount >= 0.5) {
       fruit.amount -= 0.5;
+      this.totallAmount -= 0.5;
+      this.updateTotalAmount(this.totallAmount);
     }
   }
 
   increaseAmount(fruit: Fruit): void {
     fruit.amount += 0.5;
+    this.totallAmount += 0.5;
+    this.updateTotalAmount(this.totallAmount);
   }
 
   buyFruit(fruit: Fruit): void {

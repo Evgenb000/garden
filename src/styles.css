@@ -9,3 +9,7 @@
 .scrolled {
   @apply shadow-sm shadow-cust__black bg-cust__gray-dark;
 }
+
+.hidden {
+  display: hidden;
+}
