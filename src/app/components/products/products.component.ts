@@ -11,7 +11,7 @@ interface Nutrition {
   protein: number;
 }
 
-interface Fruit {
+interface Product {
   id: number;
   name: string;
   family: string;
@@ -31,7 +31,7 @@ interface Fruit {
   imports: [NgFor],
 })
 export class ProductsComponent implements OnInit {
-  fruits: Fruit[] = [];
+  products: Product[] = [];
   public totallAmount: number = 0;
 
   constructor(
@@ -44,29 +44,31 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.getFruits().subscribe((fruits: Fruit[]) => {
-      this.fruits = fruits;
-      this.fruits.forEach((fruit) => {
-        fruit.amount = 0;
+    this.productsService
+      .getFilteredProducts()
+      .subscribe((filteredProducts: Product[]) => {
+        this.products = filteredProducts;
+        this.products.forEach((product) => {
+          product.amount = 0;
+        });
       });
-    });
   }
 
-  decreaseAmount(fruit: Fruit): void {
-    if (fruit.amount >= 0.5) {
-      fruit.amount -= 0.5;
+  decreaseAmount(product: Product): void {
+    if (product.amount >= 0.5) {
+      product.amount -= 0.5;
       this.totallAmount -= 0.5;
       this.updateTotalAmount(this.totallAmount);
     }
   }
 
-  increaseAmount(fruit: Fruit): void {
-    fruit.amount += 0.5;
+  increaseAmount(product: Product): void {
+    product.amount += 0.5;
     this.totallAmount += 0.5;
     this.updateTotalAmount(this.totallAmount);
   }
 
-  buyFruit(fruit: Fruit): void {
-    console.log(`Покупка: ${fruit.name}, количество: ${fruit.amount}`);
+  buyProduct(product: Product): void {
+    console.log(`Покупка: ${product.name}, количество: ${product.amount}`);
   }
 }

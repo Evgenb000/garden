@@ -1,18 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { SearchService } from './search.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   private apiUrl =
-    'https://run.mocky.io/v3/d34e599f-b152-4c42-bb55-2b56514edbe0';
+    'https://run.mocky.io/v3/498495b7-17bb-4fd4-98a0-8fda077c145c';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private searchService: SearchService) {}
 
-  getFruits(): Observable<any> {
-    console.log(this.http.get<any>(this.apiUrl));
+  getProducts(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
+  }
+
+  getFilteredProducts(): Observable<any> {
+    return combineLatest([this.getProducts(), this.searchService.search$]).pipe(
+      map(([products, searchTerm]) => {
+        return products.filter((product: any) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      })
+    );
   }
 }

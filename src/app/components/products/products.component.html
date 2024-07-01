@@ -2,40 +2,40 @@
   class="grid grid-flow-row grid-cols-5 gap-4 bg-cust__slate rounded-md text-cust__white p-2"
 >
   <div
-    *ngFor="let fruit of fruits"
+    *ngFor="let product of products"
     class="flex flex-col justify-between items-center w-[220px] h-[300px] p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
   >
     <div>
       <h3 class="">
-        <b>{{ fruit.name }}</b>
+        <b>{{ product.name }}</b>
       </h3>
     </div>
     <div>
       <img
-        [src]="'./assets/images/products/' + fruit.name.toLowerCase() + '.png'"
-        alt="{{ fruit.name }}"
+        [src]="'./assets/images/products/' + product.name.toLowerCase() + '.png'"
+        alt="{{ product.name }}"
         class="w-20 h-20 object-cover rounded-md"
       />
     </div>
     <div class="text-sm">
       <p>
-        Rating: <b>{{ fruit.rating }}</b> / 5 <br />
+        Rating: <b>{{ product.rating }}</b> / 5 <br />
       </p>
     </div>
 
     <div>
-      <b>{{ fruit.price }}$</b> per kg
+      <b>{{ product.price }}$</b> per kg
 
       <div class="flex w-[200px] gap-4 justify-center my-3 items-center">
-        <button (click)="decreaseAmount(fruit)" class="text-2xl w-5">
+        <button (click)="decreaseAmount(product)" class="text-2xl w-5">
           <img src="./assets/images/icon-minus.png" alt="decrease amount" />
         </button>
-        <div class="w-12">{{ fruit.amount }} kg</div>
-        <button (click)="increaseAmount(fruit)" class="text-2xl w-5">
+        <div class="w-12">{{ product.amount }} kg</div>
+        <button (click)="increaseAmount(product)" class="text-2xl w-5">
           <img src="./assets/images/icon-plus.png" alt="increase amount" />
         </button>
       </div>
     </div>
-    <button (click)="buyFruit(fruit)" class="btn">Add to cart</button>
+    <button (click)="buyProduct(product)" class="btn">Add to cart</button>
   </div>
 </article>
