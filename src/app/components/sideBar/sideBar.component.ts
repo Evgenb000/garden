@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchBarComponent } from './searchBar/searchBar.component';
+import { SortByService } from '../../services/sortBy.service';
 
 @Component({
   selector: 'app-sideBar',
@@ -8,7 +9,13 @@ import { SearchBarComponent } from './searchBar/searchBar.component';
   imports: [SearchBarComponent],
 })
 export class SideBarComponent implements OnInit {
-  constructor() {}
+  sortBy: string = 'rating';
 
-  ngOnInit() {}
+  constructor(private sortByService: SortByService) {}
+
+  onSortChange(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.sortByService.setSortBy(selectedValue);
+  }
+  ngOnInit(): void {}
 }

@@ -3,17 +3,17 @@
 >
   <h1 class="text-center">GARDEN Shop</h1>
   <app-searchBar class="w-full"></app-searchBar>
-  <h2 class="text-center mt-3">Category</h2>
+  <h2 class="text-center mt-3">Sort by</h2>
   <div>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-      <li>6</li>
-      <li>7</li>
-      <li>8</li>
-    </ul>
+    <div>
+      <label for="sort">Сортировать по:</label>
+      <select id="sort" (change)="onSortChange($event)">
+        <option value="price">Price</option>
+        <option value="name">Name</option>
+        <option value="family">Family</option>
+        <option value="order">Order</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
   </div>
 </div>
