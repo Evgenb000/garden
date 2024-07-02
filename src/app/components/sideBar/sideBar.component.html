@@ -7,13 +7,13 @@
   <div>
     <div>
       <label for="sort">Сортировать по:</label>
-      <select id="sort" (change)="onSortChange($event)">
-        <option value="price">Price</option>
-        <option value="name">Name</option>
-        <option value="family">Family</option>
-        <option value="order">Order</option>
-        <option value="rating">Rating</option>
-      </select>
+      <ul id="sort-options">
+        <li><button (click)="onSortChange('price')">Price</button></li>
+        <li><button (click)="onSortChange('name')">Name</button></li>
+        <li><button (click)="onSortChange('family')">Family</button></li>
+        <li><button (click)="onSortChange('order')">Order</button></li>
+        <li><button (click)="onSortChange('rating')">Rating</button></li>
+      </ul>
     </div>
   </div>
 </div>

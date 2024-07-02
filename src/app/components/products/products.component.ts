@@ -65,6 +65,21 @@ export class ProductsComponent implements OnInit {
       case 'rating':
         this.products.sort((a, b) => b.rating - a.rating);
         break;
+      case '-price':
+        this.products.sort((a, b) => b.price - a.price);
+        break;
+      case '-name':
+        this.products.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case '-family':
+        this.products.sort((a, b) => b.family.localeCompare(a.family));
+        break;
+      case '-order':
+        this.products.sort((a, b) => b.order.localeCompare(a.order));
+        break;
+      case '-rating':
+        this.products.sort((a, b) => a.rating - b.rating);
+        break;
       default:
         break;
     }

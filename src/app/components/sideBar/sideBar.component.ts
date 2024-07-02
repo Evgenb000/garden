@@ -9,13 +9,22 @@ import { SortByService } from '../../services/sortBy.service';
   imports: [SearchBarComponent],
 })
 export class SideBarComponent implements OnInit {
-  sortBy: string = 'rating';
+  sortBy: string = '';
 
   constructor(private sortByService: SortByService) {}
 
-  onSortChange(event: Event): void {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.sortByService.setSortBy(selectedValue);
+  onSortChange(value: string): void {
+    if (this.sortBy === value) {
+      this.sortBy = '-' + value;
+      this.sortByService.setSortBy(this.sortBy);
+    } else {
+      this.sortBy = value;
+      this.sortByService.setSortBy(this.sortBy);
+    }
+
+    console.log(this.sortBy + '123');
+    console.log(value + '0000123');
   }
+
   ngOnInit(): void {}
 }
