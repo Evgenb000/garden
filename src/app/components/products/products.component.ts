@@ -46,43 +46,53 @@ export class ProductsComponent implements OnInit {
     this.totalAmountService.setTotalAmount(amount);
   }
 
-  sortProducts(): void {
-    if (!this.products || this.products.length === 0) return;
+  sortProducts(): boolean {
+    if (!this.products || this.products.length === 0) return false;
 
-    switch (this.sortBy) {
-      case 'price':
-        this.products.sort((a, b) => a.price - b.price);
-        break;
-      case 'name':
-        this.products.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case 'family':
-        this.products.sort((a, b) => a.family.localeCompare(b.family));
-        break;
-      case 'order':
-        this.products.sort((a, b) => a.order.localeCompare(b.order));
-        break;
-      case 'rating':
-        this.products.sort((a, b) => b.rating - a.rating);
-        break;
-      case '-price':
-        this.products.sort((a, b) => b.price - a.price);
-        break;
-      case '-name':
-        this.products.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-      case '-family':
-        this.products.sort((a, b) => b.family.localeCompare(a.family));
-        break;
-      case '-order':
-        this.products.sort((a, b) => b.order.localeCompare(a.order));
-        break;
-      case '-rating':
-        this.products.sort((a, b) => a.rating - b.rating);
-        break;
-      default:
-        break;
-    }
+    const sortOrder: number = this.sortBy.startsWith('-') ? -1 : 1;
+    const sortByField: keyof Product | keyof Nutrition = this.sortBy.replace(
+      /^-/,
+      ''
+    ) as keyof Product | keyof Nutrition;
+
+    this.products.sort((a: Product, b: Product): number => {
+      let comparison: number = 0;
+
+      if (
+        sortByField === 'calories' ||
+        sortByField === 'fat' ||
+        sortByField === 'sugar' ||
+        sortByField === 'carbohydrates' ||
+        sortByField === 'protein'
+      ) {
+        comparison =
+          (a.nutritions[sortByField] - b.nutritions[sortByField]) * sortOrder;
+      }
+
+      switch (sortByField) {
+        case 'price':
+          comparison = (a.price - b.price) * sortOrder;
+          break;
+        case 'name':
+          comparison = a.name.localeCompare(b.name) * sortOrder;
+          break;
+        case 'family':
+          comparison = a.family.localeCompare(b.family) * sortOrder;
+          break;
+        case 'order':
+          comparison = a.order.localeCompare(b.order) * sortOrder;
+          break;
+        case 'rating':
+          comparison = (b.rating - a.rating) * sortOrder;
+          break;
+        default:
+          break;
+      }
+
+      return comparison;
+    });
+
+    return true;
   }
 
   ngOnInit(): void {
@@ -95,6 +105,7 @@ export class ProductsComponent implements OnInit {
       .getFilteredProducts()
       .subscribe((filteredProducts: Product[]) => {
         this.products = filteredProducts;
+        this.sortProducts();
         this.products.forEach((product) => {
           product.amount = 0;
         });

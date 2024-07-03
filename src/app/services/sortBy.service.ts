@@ -12,7 +12,11 @@ export class SortByService {
   constructor() {}
 
   setSortBy(sortBy: string): void {
-    this.sortBy.next(sortBy);
+    if (sortBy === '') {
+      this.sortBy.next('rating');
+    } else {
+      this.sortBy.next(sortBy);
+    }
   }
 
   getSortBy() {
