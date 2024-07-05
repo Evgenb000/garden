@@ -108,6 +108,7 @@ export class ProductsComponent implements OnInit {
         this.sortProducts();
         this.products.forEach((product) => {
           product.amount = 0;
+          this.increaseAmount(product);
         });
       });
   }

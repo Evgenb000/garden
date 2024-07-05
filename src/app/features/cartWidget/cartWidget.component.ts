@@ -4,7 +4,7 @@ import { TotalAmountService } from '../../services/totalAmount.service';
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
+  templateUrl: './cartWidget.component.html',
   standalone: true,
   imports: [NgClass],
 })

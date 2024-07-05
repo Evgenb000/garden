@@ -1,0 +1,12 @@
+<div
+  [ngClass]="{ hidden: totalAmount! < 0.5 }"
+  class="block fixed bottom-10 right-10 cursor-pointer hover:scale-110 transition-transform duration-300"
+>
+  <div
+    class="flex text-cust__white w-20 h-20 rounded-full bg-cust__slate-dark border-cust__gray-dark border cursor-pointer items-center justify-center"
+  >
+    Total:
+    <br />
+    {{ totalAmount }} kg.
+  </div>
+</div>

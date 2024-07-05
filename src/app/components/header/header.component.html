@@ -2,13 +2,19 @@
   [ngClass]="{ scrolled: isScrolled }"
   class="flex justify-between items-center container fixed mt-4 bg-cust__slate rounded-md p-1 duration-300 transition"
 >
-  <div class="btn">logo</div>
+  <div class="btn">
+    <a routerLink="" routerLinkActive="">logo</a>
+  </div>
   <div class="flex gap-2">
     <nav class="mr-8">
       <ul class="flex gap-2">
-        <li class="btn bg-cust__red">Stock</li>
-        <li class="btn">Contact us</li>
-        <li class="btn">About us</li>
+        <a routerLink="stock" routerLinkActive=""><li class="btn">Stock</li></a>
+        <a routerLink="contact-us" routerLinkActive=""
+          ><li class="btn">Contact Us</li></a
+        >
+        <a routerLink="about-us" routerLinkActive=""
+          ><li class="btn">About Us</li></a
+        >
       </ul>
     </nav>
     <div class="btn">login</div>
