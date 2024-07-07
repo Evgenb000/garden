@@ -1,12 +1,12 @@
 <header
   [ngClass]="{ scrolled: isScrolled }"
-  class="flex justify-between items-center container fixed mt-4 bg-cust__slate rounded-md p-1 duration-300 transition"
+  class="flex justify-between items-center container fixed mt-4 bg-cust__slate rounded-md duration-300 transition"
 >
-  <div class="btn">
+  <div class="btn ml-2">
     <a routerLink="" routerLinkActive="">logo</a>
   </div>
   <div class="flex gap-2">
-    <nav class="mr-8">
+    <nav class="mr-4 text-center items-center content-center">
       <ul class="flex gap-2">
         <a routerLink="stock" routerLinkActive=""><li class="btn">Stock</li></a>
         <a routerLink="contact-us" routerLinkActive=""
@@ -17,7 +17,11 @@
         >
       </ul>
     </nav>
-    <div class="btn">login</div>
-    <div class="btn">reg</div>
+    <div
+      class="flex gap-2 border-l border-cust__gray-light w-full rounded-r py-2 pr-2"
+    >
+      <div class="btn ml-6">login</div>
+      <div class="btn">reg</div>
+    </div>
   </div>
 </header>
