@@ -12,7 +12,9 @@
     </div>
     <div>
       <img
-        [src]="'./assets/images/products/' + product.name.toLowerCase() + '.png'"
+        [src]="
+          './assets/images/products/' + product.name.toLowerCase() + '.png'
+        "
         alt="{{ product.name }}"
         class="w-20 h-20 object-cover rounded-md"
       />
@@ -36,6 +38,6 @@
         </button>
       </div>
     </div>
-    <button (click)="buyProduct(product)" class="btn">Add to cart</button>
+    <button (click)="addToCart()" class="btn">Add to cart</button>
   </div>
 </article>

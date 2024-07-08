@@ -108,7 +108,6 @@ export class ProductsComponent implements OnInit {
         this.sortProducts();
         this.products.forEach((product) => {
           product.amount = 0;
-          this.increaseAmount(product);
         });
       });
   }
@@ -117,17 +116,15 @@ export class ProductsComponent implements OnInit {
     if (product.amount >= 0.5) {
       product.amount -= 0.5;
       this.totalAmount -= 0.5;
-      this.updateTotalAmount(this.totalAmount);
     }
   }
 
   increaseAmount(product: Product): void {
     product.amount += 0.5;
     this.totalAmount += 0.5;
-    this.updateTotalAmount(this.totalAmount);
   }
 
-  buyProduct(product: Product): void {
-    console.log(`Покупка: ${product.name}, количество: ${product.amount}`);
+  addToCart(): void {
+    this.updateTotalAmount(this.totalAmount);
   }
 }

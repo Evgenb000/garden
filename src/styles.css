@@ -13,3 +13,7 @@
 .hidden {
   display: hidden;
 }
+
+.page {
+  @apply flex justify-center text-center items-center flex-col gap-16 p-4 mt-8;
+}
