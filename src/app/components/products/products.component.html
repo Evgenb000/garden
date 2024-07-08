@@ -1,4 +1,4 @@
-<article
+<div
   class="grid grid-flow-row grid-cols-5 gap-4 bg-cust__slate rounded-md text-cust__white p-2"
 >
   <div
@@ -29,15 +29,27 @@
       <b>{{ product.price }}$</b> per kg
 
       <div class="flex w-[200px] gap-4 justify-center my-3 items-center">
-        <button (click)="decreaseAmount(product)" class="text-2xl w-5">
+        <button
+          (click)="decreaseAmount(product)"
+          class="text-2xl w-5 cursor-pointer hover:scale-110 duration-300 transition-transform"
+        >
           <img src="./assets/images/icon-minus.png" alt="decrease amount" />
         </button>
-        <div class="w-12">{{ product.amount }} kg</div>
-        <button (click)="increaseAmount(product)" class="text-2xl w-5">
+        <div class="w-12">{{ product.currentlyAmount }} kg</div>
+        <button
+          (click)="increaseAmount(product)"
+          class="text-2xl w-5 cursor-pointer hover:scale-110 duration-300 transition-transform"
+        >
           <img src="./assets/images/icon-plus.png" alt="increase amount" />
         </button>
       </div>
     </div>
-    <button (click)="addToCart()" class="btn">Add to cart</button>
+    <button
+      *ngIf="product.currentlyAmount !== 0"
+      (click)="addToCart(product)"
+      class="btn"
+    >
+      Add to cart
+    </button>
   </div>
-</article>
+</div>

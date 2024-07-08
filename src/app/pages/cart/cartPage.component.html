@@ -1,30 +1,38 @@
-<div>
+<div
+  class="flex justify-between items-center container mt-4 bg-cust__slate rounded-md duration-300 transition"
+>
   <div
-    *ngFor="let product of products"
-    class="flex flex-col justify-between items-center w-[220px] h-[300px] p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
+    class="grid container gap-4 bg-cust__slate rounded-md text-cust__white p-2"
   >
-    <div>
-      <h3 class="">
-        <b>{{ product.name }}</b>
-      </h3>
-    </div>
-    <div>
-      <img
-        [src]="
-          './assets/images/products/' + product.name.toLowerCase() + '.png'
-        "
-        alt="{{ product.name }}"
-        class="w-20 h-20 object-cover rounded-md"
-      />
-    </div>
-    <div class="text-sm">
-      <p>
-        Rating: <b>{{ product.rating }}</b> / 5 <br />
-      </p>
-    </div>
+    <div *ngFor="let product of products">
+      <div
+        class="flex justify-between items-center w-full h-[300px] p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
+      >
+        <div>
+          <h3 class="">
+            <b>{{ product.name }}</b>
+          </h3>
+        </div>
+        <div>
+          <img
+            [src]="
+              './assets/images/products/' + product.name.toLowerCase() + '.png'
+            "
+            alt="{{ product.name }}"
+            class="w-20 h-20 object-cover rounded-md"
+          />
+        </div>
+        <div class="text-sm">
+          <p>
+            Rating: <b>{{ product.rating }}</b> / 5 <br />
+          </p>
+        </div>
 
-    <div>
-      <b>{{ product.price }}$</b> per kg
+        <div>
+          <b>{{ product.price }}$</b> per kg
+          <div class="w-12">{{ product.amount }} kg</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
