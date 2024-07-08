@@ -1,38 +1,47 @@
 <div
-  class="flex justify-between items-center container mt-4 bg-cust__slate rounded-md duration-300 transition"
+  class="flex flex-col justify-between container items-center bg-cust__slate rounded-md duration-300 transition"
 >
+  <h2 *ngIf="productsCount === 0" class="text-cust__white text-3xl p-4 w-full">
+    Cart empty!
+  </h2>
+
+  <h2 *ngIf="productsCount !== 0" class="text-cust__white text-3xl p-4 w-full">
+    Cart
+    <p class="text-xl">Thank you for choosing us!</p>
+  </h2>
+
   <div
-    class="grid container gap-4 bg-cust__slate rounded-md text-cust__white p-2"
+    *ngIf="productsCount !== 0"
+    class="flex flex-col gap-2 bg-cust__slate rounded-md text-cust__white p-2"
   >
     <div *ngFor="let product of products">
       <div
-        class="flex justify-between items-center w-full h-[300px] p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
+        *ngIf="product.amount > 0"
+        class="flex justify-around w-full gap-10 items-center container h-[100px] text-lg p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
       >
-        <div>
-          <h3 class="">
-            <b>{{ product.name }}</b>
-          </h3>
-        </div>
+        <h3 class="text-2xl">
+          <b>{{ product.name }}</b>
+        </h3>
         <div>
           <img
             [src]="
               './assets/images/products/' + product.name.toLowerCase() + '.png'
             "
             alt="{{ product.name }}"
-            class="w-20 h-20 object-cover rounded-md"
+            class="w-16 h-16 object-cover rounded-md"
           />
         </div>
-        <div class="text-sm">
-          <p>
-            Rating: <b>{{ product.rating }}</b> / 5 <br />
-          </p>
-        </div>
-
-        <div>
+        <p>
+          Rating: <b>{{ product.rating }}</b> / 5
+        </p>
+        <p>
           <b>{{ product.price }}$</b> per kg
-          <div class="w-12">{{ product.amount }} kg</div>
-        </div>
+        </p>
+        <div class="w-12">{{ product.amount }} kg</div>
+        <button class="btn" (click)="onRemove(product)">Remove</button>
       </div>
     </div>
   </div>
 </div>
+
+<button class="btn mt-4">Buy</button>

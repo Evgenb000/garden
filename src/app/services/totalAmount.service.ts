@@ -9,6 +9,7 @@ export class TotalAmountService {
   totalAmount$ = this.totalAmountSubject.asObservable();
 
   setTotalAmount(amount: number): void {
+    console.log;
     this.totalAmountSubject.next(amount);
   }
 }

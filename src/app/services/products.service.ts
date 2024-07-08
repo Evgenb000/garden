@@ -17,6 +17,8 @@ export class ProductsService {
   private sortBy: string = '';
   private productsSubject: BehaviorSubject<Product[] | null> =
     new BehaviorSubject<Product[] | null>(null);
+  private totalAmountSubject = new BehaviorSubject<number>(0);
+  totalAmount$ = this.totalAmountSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -84,7 +86,8 @@ export class ProductsService {
   }
 
   updateTotalAmount(amount: number): void {
-    this.totalAmount = amount;
+    const updatedTotal = this.totalAmountSubject.value + amount;
+    this.totalAmountSubject.next(updatedTotal);
   }
 
   getTotalAmount(): number {

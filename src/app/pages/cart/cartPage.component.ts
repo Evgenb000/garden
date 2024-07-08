@@ -12,6 +12,7 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class CartPageComponent implements OnInit {
   products: Product[] = [];
+  productsCount = 0;
 
   constructor(private productsService: ProductsService) {}
 
@@ -20,7 +21,13 @@ export class CartPageComponent implements OnInit {
       .getCurrentProducts()
       .subscribe((products: Product[]) => {
         this.products = products;
-        console.log(products);
+        this.productsCount = this.products.filter(
+          (product) => product.amount > 0
+        ).length;
       });
   }
+
+  onRemove = (product: { amount: number }) => {
+    product.amount = 0;
+  };
 }

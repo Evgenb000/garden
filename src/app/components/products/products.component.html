@@ -46,7 +46,7 @@
     </div>
     <button
       *ngIf="product.currentlyAmount !== 0"
-      (click)="addToCart(product)"
+      (click)="addToCart(product, product.id)"
       class="btn"
     >
       Add to cart

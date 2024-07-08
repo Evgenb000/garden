@@ -14,8 +14,6 @@ import { Product } from '../../model/product.model';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   sortBy: string = '';
-  currAmount: number = 0;
-  public totalAmount: number = 0;
 
   constructor(
     private productsService: ProductsService,
@@ -33,17 +31,15 @@ export class ProductsComponent implements OnInit {
   decreaseAmount(product: Product): void {
     product.currentlyAmount -= 0.5;
     this.productsService.decreaseAmount(product);
-    this.totalAmount = this.productsService.getTotalAmount();
   }
 
   increaseAmount(product: Product): void {
     product.currentlyAmount += 0.5;
-    this.productsService.increaseAmount(product);
-    this.totalAmount = this.productsService.getTotalAmount();
   }
 
-  addToCart(product: Product): void {
+  addToCart(product: Product, id: number): void {
+    this.productsService.increaseAmount(product);
+    this.productsService.updateTotalAmount(product.currentlyAmount);
     product.currentlyAmount = 0;
-    this.totalAmountService.setTotalAmount(this.totalAmount);
   }
 }
