@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { HeaderComponent } from '../../components/layouts/header/header.component';
+import { FooterComponent } from '../../components/layouts/footer/footer.component';
 import { ProductsComponent } from '../../components/products/products.component';
 import { SideBarComponent } from '../../components/sideBar/sideBar.component';
 import { CartComponent } from '../../features/cartWidget/cartWidget.component';

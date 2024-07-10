@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/layouts/header/header.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
 import { SideBarComponent } from './components/sideBar/sideBar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './features/cartWidget/cartWidget.component';
-import { HomePageComponent } from './pages/home/homePage.component';
+import { HomePageComponent } from './pages/homePage/homePage.component';
 
 @Component({
   selector: 'app-root',

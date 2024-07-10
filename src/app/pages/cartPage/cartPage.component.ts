@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product.model';
 import { ProductsService } from '../../services/products.service';
 import { TotalAmountService } from '../../services/totalAmount.service';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-CartPage',
   templateUrl: './cartPage.component.html',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, NgClass],
 })
 export class CartPageComponent implements OnInit {
   products: Product[] = [];

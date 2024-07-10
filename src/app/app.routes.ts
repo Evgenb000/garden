@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './pages/home/homePage.component';
-import { CartPageComponent } from './pages/cart/cartPage.component';
-import { ContactUsComponent } from './pages/contactUs/contactUs.component';
-import { AboutUsComponent } from './pages/aboutUs/aboutUs.component';
+import { HomePageComponent } from './pages/homePage/homePage.component';
+import { CartPageComponent } from './pages/cartPage/cartPage.component';
+import { ContactPageComponent } from './pages/contactPage/contactPage.component';
+import { AboutPageComponent } from './pages/aboutPage/aboutPage.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'cart', component: CartPageComponent },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactPageComponent },
+  { path: 'about-us', component: AboutPageComponent },
 ];

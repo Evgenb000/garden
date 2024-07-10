@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col justify-between container items-center bg-cust__slate rounded-md duration-300 transition"
+  class="flex flex-col justify-between items-center container bg-cust__slate rounded-md"
 >
   <h2 *ngIf="productsCount === 0" class="text-cust__white text-3xl p-4 w-full">
     Cart empty!
@@ -14,12 +14,15 @@
     *ngIf="productsCount !== 0"
     class="flex flex-col gap-2 bg-cust__slate rounded-md text-cust__white p-2"
   >
-    <div *ngFor="let product of products">
+    <div
+      *ngFor="let product of products"
+      [ngClass]="{ hidden: product.amount === 0 }"
+    >
       <div
         *ngIf="product.amount > 0"
-        class="flex justify-around w-full gap-10 items-center container h-[100px] text-lg p-4 bg-cust__gray-light text-cust__slate-dark rounded-md"
+        class="flex justify-around w-full gap-10 items-center container h-fit text-lg p-2 bg-cust__gray-light text-cust__slate-dark rounded-md"
       >
-        <h3 class="text-2xl">
+        <h3 class="text-xl w-32">
           <b>{{ product.name }}</b>
         </h3>
         <div>
@@ -28,7 +31,7 @@
               './assets/images/products/' + product.name.toLowerCase() + '.png'
             "
             alt="{{ product.name }}"
-            class="w-16 h-16 object-cover rounded-md"
+            class="w-12 h-12 object-cover rounded-md"
           />
         </div>
         <p>
@@ -37,7 +40,7 @@
         <p>
           <b>{{ product.price }}$</b> per kg
         </p>
-        <div class="w-12">{{ product.amount }} kg</div>
+        <div class="w-16">{{ product.amount }} kg</div>
         <button class="btn" (click)="onRemove(product)">Remove</button>
       </div>
     </div>
